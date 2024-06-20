@@ -36,9 +36,8 @@ if __name__ == "__main__":
     history = [x for x in train]
     predictions = list()
     
-    # walk-forward validation
     for t in range(len(test)):
-        model = sm.tsa.arima.ARIMA(history, order=(5, 1, 0))
+        model = sm.tsa.statespace.SARIMAX(history, order=(5, 1, 0), seasonal_order=(0, 1, 1, 12))
         model_fit = model.fit()
         output = model_fit.forecast()
         yhat = output[0]
@@ -55,4 +54,3 @@ if __name__ == "__main__":
     plt.plot(test)
     plt.plot(predictions, color="red")
     plt.show()
-    
