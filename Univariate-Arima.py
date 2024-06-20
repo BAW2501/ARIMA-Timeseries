@@ -28,4 +28,9 @@ if __name__ == "__main__":
     df.plot()
     plt.show()
     
+    # this data has a clear trend and not stationary yet 
+    # we need to make it stationary lets plot the autocorrelation
+    
+    pd.plotting.autocorrelation_plot(df)
+    plt.show()
     
